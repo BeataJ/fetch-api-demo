@@ -28,6 +28,7 @@
 
     <script>
         document.getElementById('fetchUserDataBtn').addEventListener('click', fetchUserData);
+        document.getElementById('addPostForm').addEventListener('submit', addPost)
 
         function fetchUserData () {
             fetch('https://jsonplaceholder.typicode.com/users')
@@ -45,7 +46,30 @@
                     })
                     output += '</ul>';
                     document.getElementById('response').innerHTML = output;
-                })
+                });
+        }
+
+        function addPost(event) {
+            event.preventDefalut();
+
+            let title = document.getElementById('title').value;
+            let body = document.getElementById('body').value;
+
+            const myPost = {
+                title: title,
+                body: body
+            }
+
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(myPost)
+            })
+                .then(res => re.json())
+                .then(data => console.log(data))
+
         }
     </script>
 </body>
