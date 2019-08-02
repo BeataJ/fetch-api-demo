@@ -14,6 +14,16 @@
     <hr>
     <div id="response"></div>
 
+    <form id="addPostFrom">
+        <div>
+            <input type="text" id="title" placeholder="Title">
+        </div>
+        <div>
+            <textarea id="body" placeholder="Body"></textarea>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
     <script>
         document.getElementById('fetchUserDataBtn').addEventListener('click', fetchUserData);
 
