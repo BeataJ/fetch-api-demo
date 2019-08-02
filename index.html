@@ -67,9 +67,18 @@
                 },
                 body: JSON.stringify(myPost)
             })
-                .then((res) => res.json())
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    } else {
+                        return Promise.reject({
+                            status: res.status,
+                            statusText: res.statusText 
+                        })
+                    }
+                })
                 .then((data) => console.log(data))
-                .catch(err => console.log(err));
+                .catch(err => console.log('Error message', err.statusText));
 
         }
     </script>
